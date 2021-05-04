@@ -1,0 +1,104 @@
+Reversing a Singly Linkedlist:
+
+class LinkedList 
+{
+  constructor (value) 
+  {
+    this.head = 
+    {
+      value: value,
+      next: null
+    }
+    this.tail = this.head;
+    this.length = 1;
+  }
+
+  append(value) 
+  {
+    const node = 
+    {
+      value: value,
+      next: null
+    }
+    this.tail.next = node;
+    this.tail = node;
+    this.length++;
+  }
+
+  prepend(value)
+  {
+    const node = 
+    {
+      value: value,
+      next: null
+    }
+    node.next = this.head;
+    this.head = node;
+    this.length++;
+
+  }
+
+  insert (index, value) {
+    const node = {
+      value: value,
+      next: null
+    }
+
+    const leader = this.traverse(index-1);
+    const follower = leader.next;
+    leader.next = node;
+    node.next = follower;
+    this.length++;
+  }
+
+  remove (index) {
+    const leader = this.traverse(index-1);
+    const follower = leader.next;
+    leader.next = follower.next;
+    this.length--;
+  }
+
+  traverse (index) {
+    let count = 0;
+    let counterpoint = this.head;
+
+    while (count !== index) {
+      counterpoint = counterpoint.next;
+      count++;
+    }
+    return counterpoint;
+  }
+
+
+  reverse (){
+    if (this.length === 1) {
+      return this.head;
+    }
+    let first = this.head;
+    this.tail = this.head;
+    let second = first.next;
+    while (second) {
+      let temp = second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+    }
+    this.head.next =null;
+    this.head = first;
+  }
+
+  print (){
+
+  }
+}
+
+
+const linkedlist = new LinkedList(10);
+linkedlist.append(5);
+linkedlist.prepend(1);
+linkedlist.insert (1, 20);
+//linkedlist.insert(1,20);
+linkedlist.reverse();
+
+
+console.log (linkedlist);

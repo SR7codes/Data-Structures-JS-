@@ -1,0 +1,92 @@
+Doubly Linked List with append, prepend, insert and remove methods:
+
+class DoublyLinkedList 
+{
+  constructor (value) 
+  {
+    this.head = 
+    {
+      value: value,
+      next: null,
+      prev: null
+    }
+    this.tail = this.head;
+    this.length = 1;
+  }
+
+  append(value) 
+  {
+    const node = 
+    {
+      value: value,
+      next: null,
+      prev: null
+    }
+    this.tail.next = node;
+    node.prev = this.head;
+    this.tail = node;
+    this.length++;
+  }
+
+  prepend(value)
+  {
+    const node =
+    {
+      value: value,
+      next: null,
+      prev: null
+    }
+    this.head.prev = node;
+    node.next = this.head;
+    this.head = node;
+    this.length++;
+
+  }
+
+  insert (index, value) {
+    const node = {
+      value: value,
+      next: null,
+      prev = null
+    }
+    
+    const leader = this.traverse(index-1);
+    const follower = leader.next;
+    leader.next = node;
+    node.prev = leader;
+    follower.prev = node;
+    node.next = follower;
+
+    this.length++;
+  }
+
+  remove (index) {
+    const leader = this.traverse(index-1);
+    const follower = leader.next;
+    leader.next = follower.next;
+    follower.prev = leader;
+    this.length--;
+  }
+
+  traverse (index) {
+    let count = 0;
+    let counterpoint = this.head;
+
+    while (count !== index) {
+      counterpoint = counterpoint.next;
+      count++;
+    }
+    return counterpoint;
+  }
+}
+
+
+const linkedlist = new DoublyLinkedList(10);
+linkedlist.append(5);
+linkedlist.prepend(1);
+linkedlist.insert(1,20);
+linkedlist.remove(1,20);
+
+
+ console.log (linkedlist);
+

@@ -1,0 +1,50 @@
+Queue using Linked List:
+
+class node {
+  constructor (value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+class Queue {
+  constructor () {
+    this.first = null;
+    this.last = null;
+    this.length = 0;
+  }
+
+  enqueue (value) {
+    const newnode = new node (value);
+    if (this.length === 0){
+      this.first = newnode;
+      this.last = newnode;
+      this.length++;
+    } else {
+    this.last.next = newnode; 
+    this.last = newnode;
+    this.length++;
+    }
+  }
+
+  dequeue () {
+    if (this.length === 0) {
+      return null;
+    }
+
+    else if (this.length === 1){
+      this.last =null;
+    }
+    
+    this.first = this.first.next
+    this.length--;
+  }
+
+}
+
+const newQueue = new Queue();
+newQueue.enqueue(10);
+newQueue.enqueue(15);
+//newQueue.enqueue(11);
+newQueue.dequeue();
+console.log(newQueue);

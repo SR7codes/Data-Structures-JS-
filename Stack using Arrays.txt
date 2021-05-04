@@ -1,0 +1,33 @@
+Stack using array:
+
+class MyStack {
+  constructor () {
+    this.array = [];
+  }
+
+  push (value) {
+    this.array.push(value);
+    return this.array;
+  }
+  
+  pop (){
+    this.array.pop();
+    return this.array;
+  }
+
+  print() {
+    console.log (this.array);
+  }
+
+  print1(index) {
+    console.log (this.array[index]);
+  }
+
+}
+
+const newstack = new MyStack();
+newstack.push(5);
+newstack.push(15);
+//newstack.print();
+newstack.pop();
+//console.log(newstack);

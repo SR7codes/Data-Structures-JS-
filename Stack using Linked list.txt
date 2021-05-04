@@ -1,0 +1,58 @@
+Stack using LinkedList:
+
+class node {
+  constructor (value) {
+  this.value = value;
+  this.next = null;
+  }
+}
+
+class Stack {
+  constructor (value){
+    this.top = null;
+    this.bottom = null;
+    this.length = 0;
+  }
+
+  peek () {
+
+  }
+
+  push(value) {
+    const newnode = new node (value);
+    if (this.length === 0) {
+        this.top = newnode;
+        this.bottom = newnode;
+    }
+    else {
+      const holder = this.top;
+      this.top = newnode;
+      this.top.next = holder;
+      
+    } 
+    this.length++;
+    return this;
+  }
+
+  pop() {
+      if (this.length === 0){
+        return null;
+      }
+      // if (this.top === this.bottom) {
+      //   this.bottom = null;
+      // }
+    this.top = this.top.next;
+    this.length--;
+    return this;
+  }
+}
+
+const mystack = new Stack ();
+mystack.push(10);
+mystack.push(15);
+mystack.push(25);
+mystack.pop();
+mystack.pop();
+mystack.pop();
+
+//console.log (mystack);

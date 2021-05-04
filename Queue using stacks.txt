@@ -1,0 +1,43 @@
+Queue using stacks:
+
+class Mystack {
+  constructor () {
+    this.array = [];
+    this.first = null;
+    this.last = null;
+  }
+
+  enqueue (value) {
+    if (this.array.length === 0) {
+      this.array.push(value);
+      this.first = this.array[this.array.length-1];
+      this.last = this.first; 
+    }
+
+    else {
+      this.array.push(value);
+      this.first = this.array[0];
+      this.last = this.array[this.array.length-1];
+    }
+  }
+
+  dequeue () {
+    if (this.array.length === 0) {
+      return null;
+    }
+    else {
+      this.array.shift();
+      this.first = this.array[0];
+    }
+  }
+
+}
+
+const myqueue = new Mystack();
+
+myqueue.enqueue(10);
+myqueue.enqueue(15);
+myqueue.enqueue(25);
+myqueue.dequeue();
+
+console.log(myqueue);
